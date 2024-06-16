@@ -6,32 +6,25 @@ let playlist_player = document.querySelector(".Songs-playlist");
 
 
 async function song_fetcher(path) {
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    let response = await fetch(proxyUrl + path);
+    let html = await response.text();
 
-        let response = await fetch(path);
+    let tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
 
-        let html = await response.text();
-  
-        // Create a temporary div to parse the response HTML
-        let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = html;
-    
-  
+    let anchors = tempDiv.getElementsByTagName("a");
+    let gaana = [];
 
-        let anchors = tempDiv.getElementsByTagName("a");
-     
-        let gaana = [];
-     
-
-        for (let i = 0; i < anchors.length; i++) {
-            let href = anchors[i].href;
-            if (href.endsWith(".mp3")) {
-                gaana.push(href);
-            }
+    for (let i = 0; i < anchors.length; i++) {
+        let href = anchors[i].href;
+        if (href.endsWith(".mp3")) {
+            gaana.push(href);
         }
-
-     
-        return gaana;
     }
+
+    return gaana;
+}
 
 async function img_fetcher(path) {
        

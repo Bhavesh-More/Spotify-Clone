@@ -15,21 +15,21 @@ function path_collector(song_path, imgs_path) {
 // Use raw.githubusercontent.com for GitHub URLs
 playlists_collector(
     "Animal",
-    "song img/animal.png",
+    "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/play/imgss/animal.png",
     "Artists",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/play/big/",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/play/imgss/"
 );
 playlists_collector(
     "All time",
-    "song img/world of war.png",
+    "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/All%20time/imgss/world%20of%20war.png",
     "papa",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/All%20time/songs/",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/All%20time/imgss/"
 );
 playlists_collector(
     "Boom",
-    "playlists/playlist img/Boom.png",
+    "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/Boom/imgss/Boom.png",
     "Bhavesh",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/Boom/songs/",
     "https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlists/Boom/imgss/"

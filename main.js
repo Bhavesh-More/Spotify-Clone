@@ -1,4 +1,3 @@
-
 let Folders_paths = [];
 
 function playlists_collector(playlist_name, playlist_img, playlist_maker, song_path, imgs_path) {
@@ -13,7 +12,7 @@ function path_collector(song_path, imgs_path) {
     });
 }
 
-// Update these paths to use raw.githubusercontent.com
+// Use raw.githubusercontent.com for GitHub URLs
 playlists_collector(
     "Animal",
     "song img/animal.png",

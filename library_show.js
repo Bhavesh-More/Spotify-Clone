@@ -51,36 +51,33 @@ async function img_fetcher(path) {
     return imges;
 }
 
+async function fetchPlaylistData() {
+    const response = await fetch('https://raw.githubusercontent.com/Bhavesh-More/Spotify-Clone/main/playlist.json');
+    const data = await response.json();
+    return data;
+}
+
 playlist_player.addEventListener("click", async (event) => {
     if (event.target && event.target.classList.contains("playlist-fram")) {
         library_hero.innerHTML = "";
         library_counter = 0;
-        let play_songs = [];
-        let ins_img = [];
-        let temp_name;
-        for (const [id, element] of Folders_paths.entries()) {
-            if (id == event.target.id) {
-                play_songs = await song_fetcher(element.pathofsong); // Wait for songs to be fetched
-                ins_img = await img_fetcher(element.pathofimg);
-                temp_name = element.playlist_name;
-            }
-        }
+        const playlists = await fetchPlaylistData();
+        const playlistName = event.target.id;
+        const playlist = playlists[playlistName];
 
-        for (let index = 0; index < play_songs.length; index++) {
-            const element = play_songs[index];
-            const elem = ins_img[index];
-            let a = elem.replaceAll("%20", " ");
-            let b = a.split("/imgss/")[1];
-            let c = b.replace(".png", "");
-            library_song_shower(`${c}`, `${elem}`, "papa", "bhavesh");
+        for (let i = 0; i < playlist.songs.length; i++) {
+            const song = playlist.songs[i];
+            const img = playlist.images[i];
+            const songName = img.split('/').pop().replace('.png', '');
+            library_song_shower(songName, img, "papa", "bhavesh");
         }
 
         library_hero.addEventListener("click", (dets) => {
             if (dets.target && dets.target.classList.contains("libray-song-fram")) {
                 // Logic to play song in the playlist
-                play_songs.forEach(function (element, id) {
+                playlist.songs.forEach((element, id) => {
                     if (id == dets.target.id) {
-                        setMusic_playlist(play_songs, id);
+                        setMusic_playlist(playlist.songs, id);
                         playMusic();
                     }
                 });

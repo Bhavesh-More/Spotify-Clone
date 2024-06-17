@@ -15,7 +15,6 @@ async function song_fetcher(path) {
     let response = await panda(path);
     let html = await response.text();
 
-    // Create a temporary div to parse the response HTML
     let tempDiv = document.createElement("div");
     tempDiv.innerHTML = html;
 
